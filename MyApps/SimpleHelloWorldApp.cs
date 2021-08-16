@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MyLibrary.Applications
+namespace MyApps
 {
     public class SimpleHelloWorldApp
     {

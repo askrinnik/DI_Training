@@ -1,4 +1,6 @@
-﻿namespace MyLibrary.Applications
+﻿using MyApps.Interfaces;
+
+namespace MyApps
 {
     public class HelloWorldApp
     {

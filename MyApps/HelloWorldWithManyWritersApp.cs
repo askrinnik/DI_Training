@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using MyApps.Interfaces;
 
-namespace MyLibrary.Applications
+namespace MyApps
 {
     public class HelloWorldWithManyWritersApp
     {

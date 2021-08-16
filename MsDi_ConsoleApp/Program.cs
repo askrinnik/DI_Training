@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
+using MyApps;
+using MyApps.Interfaces;
 using MyLibrary;
-using MyLibrary.Applications;
-using MyLibrary.Applications.BankOperationReader;
+using MyLibrary.BankOperationHandlers;
+using MyLibrary.BankOperationRepositories;
+using MyLibrary.MessageWriterDecorators;
+using MyLibrary.MessageWriters;
 
 namespace MsDi_ConsoleApp
 {
@@ -16,8 +20,9 @@ namespace MsDi_ConsoleApp
             //HelloWorldWithManyWriters_Example();
             //HelloWorldWithAdapter_Example();
             //BankOperationReaderApp_Example();
-            BankOperationReaderApp_Example2();
+            //BankOperationReaderApp_Example2();
 
+            Console.WriteLine("\nPress any key...");
             Console.ReadLine();
         }
         private static void HelloWorldWithWriter_Example()
@@ -102,7 +107,7 @@ namespace MsDi_ConsoleApp
                     ActivatorUtilities.CreateInstance<BankRepository>(c)));
             services.AddTransient<IMessageWriter, ConsoleMessageWriter>();
 
-            var types = typeof(IHandler).Assembly.GetTypes()
+            var types = typeof(DisplayAmountHandler).Assembly.GetTypes()
                 .Where(type => !type.IsAbstract && typeof(IHandler).IsAssignableFrom(type))
                 .ToArray();
             foreach (var type in types) 

@@ -1,24 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Threading;
+using MyApps.Interfaces;
 
-namespace MyLibrary
+namespace MyLibrary.BankOperationRepositories
 {
-    public interface IRepository
-    {
-        decimal GetAmount(string accountName);
-    }
-
-    public class BankRepository: IRepository
-    {
-        private readonly Dictionary<string, decimal> _storage = new() { { "Petrenko", 11 }, { "Sokolenko", 22 }, { "Shevchenko", 33 } };
-        public decimal GetAmount(string accountName)
-        {
-            Thread.Sleep(1000);
-            return _storage[accountName];
-        }
-    }
-
-
     public class CachedRepository : IRepository
     {
         private readonly IRepository _repository;

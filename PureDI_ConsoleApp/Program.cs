@@ -1,7 +1,11 @@
 ﻿using System;
+using MyApps;
+using MyApps.Interfaces;
 using MyLibrary;
-using MyLibrary.Applications;
-using MyLibrary.Applications.BankOperationReader;
+using MyLibrary.BankOperationHandlers;
+using MyLibrary.BankOperationRepositories;
+using MyLibrary.MessageWriterDecorators;
+using MyLibrary.MessageWriters;
 
 namespace PureDI_ConsoleApp
 {
@@ -18,8 +22,9 @@ namespace PureDI_ConsoleApp
             //HelloWorldWithAdapter_Example();
             //BankApp_Example();
             //BankAppWithCache_Example();
-            BankOperationReaderApp_Example();
+            //BankOperationReaderApp_Example();
 
+            Console.WriteLine("\nPress any key...");
             Console.ReadLine();
         }
 

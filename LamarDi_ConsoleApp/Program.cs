@@ -2,9 +2,13 @@
 using System.Linq;
 using Lamar;
 using Microsoft.Extensions.DependencyInjection;
+using MyApps;
+using MyApps.Interfaces;
 using MyLibrary;
-using MyLibrary.Applications;
-using MyLibrary.Applications.BankOperationReader;
+using MyLibrary.BankOperationHandlers;
+using MyLibrary.BankOperationRepositories;
+using MyLibrary.MessageWriterDecorators;
+using MyLibrary.MessageWriters;
 
 namespace LamarDi_ConsoleApp
 {
@@ -16,8 +20,9 @@ namespace LamarDi_ConsoleApp
             //HelloWorldWithDecorator1_Example();
             //HelloWorldWithManyWriters_Example();
             //HelloWorldWithAdapter_Example();
-            BankOperationReaderApp_Example2();
+            //BankOperationReaderApp_Example2();
 
+            Console.WriteLine("\nPress any key...");
             Console.ReadLine();
         }
         private static void HelloWorldWithWriter_Example()
@@ -80,11 +85,15 @@ namespace LamarDi_ConsoleApp
             services.For<IRepository>().DecorateAllWith<CachedRepository>();
             services.AddTransient<IMessageWriter, ConsoleMessageWriter>();
 
-            var types = typeof(IHandler).Assembly.GetTypes()
-                .Where(type => !type.IsAbstract && typeof(IHandler).IsAssignableFrom(type))
-                .ToArray();
-            foreach (var type in types)
-                services.For(typeof(IHandler)).Add(type);
+            //var types = typeof(DisplayAmountHandler).Assembly.GetTypes()
+            //    .Where(type => !type.IsAbstract && typeof(IHandler).IsAssignableFrom(type))
+            //    .ToArray();
+            //foreach (var type in types)
+            //    services.For(typeof(IHandler)).Add(type);
+            services.AddTransient<IHandler, ReadAmountHandler>();
+            services.AddTransient<IHandler, DisplayAmountHandler>();
+            services.AddTransient<IHandler, TotalAmountAmountCalculatorHandler>();
+
 
             services.AddTransient<BankOperationReaderApp>();
             var container = new Container(services);

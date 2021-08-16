@@ -1,16 +1,8 @@
 ﻿using System.Collections.Generic;
+using MyApps.Interfaces;
 
-namespace MyLibrary.Applications.BankOperationReader
+namespace MyApps
 {
-    public record BankOperationRequest(string AccountName1, string AccountName2);
-
-    public class BankOperationResponse
-    {
-        public decimal Account1Amount { get; set; }
-        public decimal Account2Amount { get; set; }
-        public decimal TotalAmount { get; set; }
-    }
-
     public class BankOperationReaderApp
     {
         private readonly IEnumerable<IHandler> _handlers;

@@ -14,7 +14,8 @@ namespace PureDI_ConsoleApp
         static void Main()
         {
             //SimpleHelloWorldApp_Example();
-            //HelloWorldWithWriter_Example();
+            //HelloWorldWithWriter_Example1();
+            //HelloWorldWithWriter_Example2();
             //HelloWorldWithDecorator1_Example();
             //HelloWorldWithDecorator2_Example();
             //HelloWorldWithManyWriters_Example();
@@ -34,7 +35,12 @@ namespace PureDI_ConsoleApp
             app.SayHello();
         }
 
-        private static void HelloWorldWithWriter_Example()
+        private static void HelloWorldWithWriter_Example1()
+        {
+            var app = new HelloWorldWithWriterApp();
+            app.SayHello();
+        }
+        private static void HelloWorldWithWriter_Example2()
         {
             var writer = new ConsoleMessageWriter();
             var app = new HelloWorldApp(writer);

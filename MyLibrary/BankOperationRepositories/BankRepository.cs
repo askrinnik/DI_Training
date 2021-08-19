@@ -6,7 +6,8 @@ namespace MyLibrary.BankOperationRepositories
 {
     public class BankRepository: IRepository
     {
-        private readonly Dictionary<string, decimal> _storage = new() { { "Petrenko", 11 }, { "Sokolenko", 22 }, { "Shevchenko", 33 } };
+        private readonly Dictionary<string, decimal> _storage = 
+            new() { { "Petrenko", 11 }, { "Sokolenko", 22 }, { "Shevchenko", 33 } };
         public decimal GetAmount(string accountName)
         {
             Thread.Sleep(1000);

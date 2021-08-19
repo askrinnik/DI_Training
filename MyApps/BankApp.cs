@@ -16,14 +16,14 @@ namespace MyApps
 
         public void Run()
         {
-            WriteAmount("Petrenko");
-            WriteAmount("Sokolenko");
-            WriteAmount("Petrenko");
-            WriteAmount("Petrenko");
-            WriteAmount("Sokolenko");
+            ProcessAmountForAccount("Petrenko");
+            ProcessAmountForAccount("Sokolenko");
+            ProcessAmountForAccount("Petrenko");
+            ProcessAmountForAccount("Petrenko");
+            ProcessAmountForAccount("Sokolenko");
         }
 
-        private void WriteAmount(string accountName)
+        private void ProcessAmountForAccount(string accountName)
         {
             var amount = _repository.GetAmount(accountName).ToString(CultureInfo.CurrentCulture);
             _writer.Write($"{accountName}: {amount}");

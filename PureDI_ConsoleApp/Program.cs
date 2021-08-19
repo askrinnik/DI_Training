@@ -49,9 +49,9 @@ namespace PureDI_ConsoleApp
 
         private static void HelloWorldWithDecorator1_Example()
         {
-            var app = new HelloWorldApp(
-                new MessageCapitalizer(
-                    new ConsoleMessageWriter()));
+            var writer = new ConsoleMessageWriter();
+            var decorator = new MessageCapitalizer(writer);
+            var app = new HelloWorldApp(decorator);
             app.SayHello();
         }
 

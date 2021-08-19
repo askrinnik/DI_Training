@@ -17,7 +17,6 @@ namespace MyLibrary.MessageWriterDecorators
             Console.ForegroundColor = ConsoleColor.Red;
             _writer.Write(message);
             Console.ForegroundColor = color;
-
         }
     }
 }
